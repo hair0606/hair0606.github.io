@@ -1,0 +1,273 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <title>横幅碎片计算</title>
+</head>
+<body>
+<form id="form1" name="form1">
+	 <br />横幅碎片计算工具2023版本 <br />
+    <br />原作者：无名草<br />
+<br />字符支持：都是牌不好，提供53个横幅合成的无名大佬，吧友，社友，群友......<br />
+
+   <br /><br />
+    鼠 ：<input type="text" id="shu" value="0"/>
+	<br />
+	牛 ：<input type="text" id="niu" value="0"/>
+	<br />
+	虎 ：<input type="text" id="hu" value="0"/>
+	<br />
+    兔 ：<input type="text" id="tu" value="0"/>
+    <br />
+	龙 ：<input type="text" id="long" value="0"/>
+    <br />
+	蛇 ：<input type="text" id="she" value="0"/>
+    <br />
+	马 ：<input type="text" id="ma" value="0"/>
+    <br />
+	羊 ：<input type="text" id="yang" value="0"/>
+	<br />
+	猴 ：<input type="text" id="hou" value="0"/>
+	<br />
+	鸡 ：<input type="text" id="ji" value="0"/>
+	<br />
+	狗 ：<input type="text" id="gou" value="0"/>
+	<br />
+	猪 ：<input type="text" id="zhu" value="0"/>
+	<br />
+    <br />
+
+    <input type="button" value="计算" onclick="cal();">
+
+	<br />
+	<br />
+	结果 ：<br />
+	<textarea id="result" rows="30" cols="30"></textarea>
+</form>
+
+<script type="text/javascript">
+	var suipianArr = [
+		"鼠牛虎马",
+"鼠牛虎羊",
+"鼠牛虎猪",
+"鼠牛兔羊",
+"鼠牛兔狗",
+"鼠牛兔猪",
+"鼠牛龙羊",
+"鼠牛龙鸡",
+"鼠虎龙猴",
+"鼠兔蛇马",
+"鼠兔羊猴",
+"鼠兔羊狗",
+"鼠龙蛇鸡",
+"鼠龙马羊",
+"鼠龙马猴",
+"鼠龙马鸡",
+"鼠龙马猪",
+"鼠蛇马猪",
+"鼠蛇鸡猪",
+"鼠猴鸡狗",
+"牛虎兔龙",
+"牛兔龙蛇",
+"牛兔龙羊",
+"牛兔龙狗",
+"牛兔马狗",
+"牛兔马猪",
+"牛龙蛇马",
+"牛龙蛇猴",
+"牛龙蛇鸡",
+"牛蛇马狗",
+"牛羊猴鸡",
+"虎兔龙马",
+"虎兔龙猪",
+"虎兔蛇马",
+"虎兔蛇猪",
+"虎兔马狗",
+"虎兔猴鸡",
+"虎兔猴狗",
+"虎龙马猴",
+"虎龙羊鸡",
+"虎蛇猴鸡",
+"兔龙蛇马",
+"兔龙蛇鸡",
+"兔龙蛇狗",
+"兔龙蛇猪",
+"兔蛇马羊",
+"兔蛇马狗",
+"兔马羊狗",
+"兔马鸡狗",
+"兔马狗猪",
+"龙蛇马羊",
+"龙蛇马猴",
+"龙蛇马狗",
+"龙蛇羊猴",
+"龙蛇羊鸡",
+"龙蛇鸡狗",
+"龙蛇鸡猪",
+"龙马羊鸡",
+"龙马猴猪",
+"蛇马羊狗",
+"蛇马猴狗",
+"蛇羊鸡狗",
+"蛇猴鸡猪",
+"马羊猴鸡",
+"鼠马狗猪",
+"虎龙马羊",
+"鼠兔马猴",
+"鼠牛兔龙",
+"鼠兔马狗",
+"鼠马猴鸡",
+"牛虎蛇羊",
+"龙蛇猴猪",
+"牛虎蛇狗",
+"鼠蛇猴鸡",
+"蛇马羊鸡",
+"鼠马鸡狗",
+"龙马鸡猪",
+"蛇马鸡猪",
+"鼠牛兔蛇",
+"虎马狗猪",
+"蛇马鸡狗",
+"鼠蛇马羊",
+"兔龙鸡狗",
+"鼠马羊狗",
+"龙蛇马鸡",
+"牛虎龙狗",
+"鼠蛇马猴",
+"兔马猴狗",
+"兔猴鸡狗",
+"羊猴狗猪",
+"鼠虎兔马",
+"虎龙羊狗",
+"牛兔马羊",
+"牛羊鸡狗",
+"鼠牛虎兔",
+"牛兔蛇狗",
+"蛇马羊猪",
+"鼠马猴狗",
+"牛虎龙羊",
+"鼠马羊鸡",
+"兔鸡狗猪",
+"鼠蛇羊狗",
+"鼠龙羊猴",
+"蛇马鸡猪",
+"鼠牛龙蛇",
+
+	];
+
+
+    function cal(){
+		var shuCount = Number(document.getElementById("shu").value);
+		var niuCount = Number(document.getElementById("niu").value);
+		var huCount = Number(document.getElementById("hu").value);
+		var tuCount = Number(document.getElementById("tu").value);
+		var longCount = Number(document.getElementById("long").value);
+		var sheCount = Number(document.getElementById("she").value);
+		var maCount = Number(document.getElementById("ma").value);
+		var yangCount = Number(document.getElementById("yang").value);
+		var houCount = Number(document.getElementById("hou").value);
+		var jiCount = Number(document.getElementById("ji").value);
+		var gouCount = Number(document.getElementById("gou").value);
+		var zhuCount = Number(document.getElementById("zhu").value);
+
+		var countMap = new Map();
+		countMap.set("鼠",shuCount);
+		countMap.set("牛",niuCount);
+		countMap.set("虎",huCount);
+		countMap.set("兔",tuCount);
+		countMap.set("龙",longCount);
+		countMap.set("蛇",sheCount);
+		countMap.set("马",maCount);
+		countMap.set("羊",yangCount);
+		countMap.set("猴",houCount);
+		countMap.set("鸡",jiCount);
+		countMap.set("狗",gouCount);
+		countMap.set("猪",zhuCount);
+
+		var resultMap = new Map();
+		// 初始化resultMap
+		for(var i = 0; i < suipianArr.length; i++) {
+			resultMap.set(suipianArr[i],0);
+		}
+
+
+		while (true) {
+			var maxKey = "";
+			var maxVal = 0;
+			for(var i = 0; i < suipianArr.length; i++) {
+				var val = calVal(suipianArr[i],countMap);
+				if(val>maxVal) {
+					maxKey = suipianArr[i];
+					maxVal = val;
+				}
+			}
+
+			if(maxVal===0) {
+				break;
+			}
+
+			var arr2 = maxKey.split('');
+			countMap.set(arr2[0],countMap.get(arr2[0])-1);
+			countMap.set(arr2[1],countMap.get(arr2[1])-1);
+			countMap.set(arr2[2],countMap.get(arr2[2])-1);
+			countMap.set(arr2[3],countMap.get(arr2[3])-1);
+
+			resultMap.set(maxKey,resultMap.get(maxKey)+1);
+		}
+
+
+		if(resultMap.size===0) {
+			Toast("无可合成碎片");
+		} else {
+			var result = "";
+			var totalCount = 0;
+			resultMap.forEach(function (value, key, map) {
+				if(value!==0) {
+					totalCount += value;
+					result += key+"*"+value + "\n";
+				}
+			});
+			
+			result += "\n共合成碎片："+totalCount+"\n";
+			
+			result += "\n剩余碎片：\n";
+			countMap.forEach(function (value, key, map) {
+				if(value!==0) {
+					result += key+"*"+value + " ";
+				}
+			});
+
+			document.getElementById("result").value = result;
+		}
+		
+
+    }
+
+    // 计算权值
+    function calVal(suipian,countMap) {
+		var arr2 = suipian.split('');
+		if(countMap.get(arr2[0])!==0&&countMap.get(arr2[1])!==0
+				&&countMap.get(arr2[2])!==0&&countMap.get(arr2[3])!==0) {
+			return countMap.get(arr2[0])+countMap.get(arr2[1])+countMap.get(arr2[2])+countMap.get(arr2[3]);
+		}
+
+		return 0;
+	}
+	
+	
+	//提示信息 封装
+	function Toast(msg,duration){  
+		duration=isNaN(duration)?3000:duration;  
+		var m = document.createElement('div');  
+		m.innerHTML = msg;  
+		m.style.cssText="font-size: .32rem;color: rgb(255, 255, 255);background-color: rgba(0, 0, 0, 0.6);padding: 10px 15px;margin: 0 0 0 -60px;border-radius: 4px;position: fixed;    top: 10%;left: 50%;width: 130px;text-align: center;";
+		document.body.appendChild(m);  
+		setTimeout(function() {  
+			var d = 0.5;
+			m.style.opacity = '0';  
+			setTimeout(function() { document.body.removeChild(m) }, d * 1000);  
+		}, duration);  
+	}  
+
+</script>
+</body>
+</html>
